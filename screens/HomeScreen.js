@@ -21,9 +21,7 @@ export default function HomeScreen() {
         <View style={styles.welcomeContainer}>
           <Image
             source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
+              require('../assets/images/deciduous-tree.png')
             }
             style={styles.welcomeImage}
           />
@@ -34,23 +32,14 @@ export default function HomeScreen() {
 
           <Text style={styles.getStartedText}>Get started by opening</Text>
 
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
+
 
           <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
+            Change this text and your app will automatically preload.
           </Text>
         </View>
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
+
       </ScrollView>
 
       <View style={styles.tabBarInfoContainer}>
@@ -68,6 +57,8 @@ export default function HomeScreen() {
     </View>
   );
 }
+
+
 
 HomeScreen.navigationOptions = {
   header: null,
