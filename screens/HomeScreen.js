@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import ClassCard from '../components/ClassCard';
 
 export default function HomeScreen() {
   return (
@@ -21,88 +22,77 @@ export default function HomeScreen() {
         <View style={styles.welcomeContainer}>
           <Image
             source={
-              require('../assets/images/deciduous-tree.png')
+              require('../assets/images/icon.png')
             }
             style={styles.welcomeImage}
           />
         </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically preload.
-          </Text>
-        </View>
-
-
+        <ClassCard
+          period="01"
+          teacherLast="Santillan"
+          average="100"
+        />
+        <ClassCard
+          period="02"
+          teacherLast="Jados"
+          average="100"
+        />
+        <ClassCard
+          period="03"
+          teacherLast="Millen"
+          average="100"
+        />
+        <ClassCard
+          period="04"
+          teacherLast="Medina"
+          average="100"
+        />
+        <ClassCard
+          period="05"
+          teacherLast="Katzmarek"
+          average="100"
+        />
+        <ClassCard
+          period="06"
+          teacherLast="Janicek"
+          average="100"
+        />
+        <ClassCard
+          period="07"
+          teacherLast="Taba"
+          average="100"
+        />
+        <ClassCard
+          period="08"
+          teacherLast="Lunch"
+        />
+        <ClassCard
+          period="09"
+          teacherLast="Kondos"
+        />
+        <ClassCard
+          period="HR"
+          teacherLast="Santillan"
+        />
       </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View>
     </View>
   );
 }
-
-
 
 HomeScreen.navigationOptions = {
   header: null,
 };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
-
 function handleLearnMorePress() {
   WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
+    'https://oakgrades.com/'
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'gray'//'#fff',
   },
   developmentModeText: {
     marginBottom: 20,
