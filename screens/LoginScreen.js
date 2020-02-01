@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
-import ClassCard from '../components/ClassCard';
+import LoginCard from '../components/LoginCard';
 
-export default function HomeScreen() {
+export default function LoginScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -27,60 +27,13 @@ export default function HomeScreen() {
             style={styles.welcomeImage}
           />
         </View>
-        <ClassCard
-          period="01"
-          teacherLast="Santillan"
-          average="100"
-          onPress={openOak}
-        />
-        <ClassCard
-          period="02"
-          teacherLast="Jados"
-          average="100"
-        />
-        <ClassCard
-          period="03"
-          teacherLast="Millen"
-          average="100"
-        />
-        <ClassCard
-          period="04"
-          teacherLast="Medina"
-          average="100"
-        />
-        <ClassCard
-          period="05"
-          teacherLast="Katzmarek"
-          average="100"
-        />
-        <ClassCard
-          period="06"
-          teacherLast="Janicek"
-          average="100"
-        />
-        <ClassCard
-          period="07"
-          teacherLast="Taba"
-          average="100"
-        />
-        <ClassCard
-          period="08"
-          teacherLast="Lunch"
-        />
-        <ClassCard
-          period="09"
-          teacherLast="Kondos"
-        />
-        <ClassCard
-          period="HR"
-          teacherLast="Santillan"
-        />
+			<LoginCard />
       </ScrollView>
     </View>
   );
 }
-
-HomeScreen.navigationOptions = {
+ 
+LoginScreen.navigationOptions = {
   header: null,
 };
 
