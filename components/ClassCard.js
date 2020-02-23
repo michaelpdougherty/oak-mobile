@@ -19,13 +19,29 @@ export default function ClassCard(props) {
           </View>
           <View style={styles.containerItem}>
             <Text style={styles.text}>
-              {props.average} A
+              {props.average} {getLetter(props.average)}
             </Text>
           </View>
         </View>
       </Card>
     </TouchableOpacity>
   );
+}
+
+function getLetter(val) {
+  if (val == undefined) {
+    return
+  } else if (val >= 89.5) {
+    return 'A'
+  } else if (val >= 79.5) {
+    return 'B'
+  } else if (val >= 69.5) {
+    return 'C'
+  } else if (val >= 59.5) {
+    return 'D'
+  } else {
+    return 'F'
+  }
 }
 
 const styles = StyleSheet.create({

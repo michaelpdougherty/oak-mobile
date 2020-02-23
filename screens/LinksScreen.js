@@ -1,16 +1,22 @@
+import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, Button } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
 export default function LinksScreen() {
   return (
     <ScrollView style={styles.container}>
-      {/**
-       * Go ahead and delete ExpoLinksView and replace it with your content;
-       * we just wanted to provide you with some helpful links.
-       */}
-      <ExpoLinksView />
+      <Button
+        title="Open Oak in Browser"
+        onPress={openOak}
+      />
     </ScrollView>
+  );
+}
+
+function openOak() {
+  WebBrowser.openBrowserAsync(
+    'http://mike-desktop.local/'
   );
 }
 

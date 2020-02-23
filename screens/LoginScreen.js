@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
+  Button,
   Image,
   Platform,
   ScrollView,
@@ -13,7 +14,9 @@ import {
 import { MonoText } from '../components/StyledText';
 import LoginCard from '../components/LoginCard';
 
-export default function LoginScreen() {
+let username = "", password = ""
+
+export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -27,26 +30,66 @@ export default function LoginScreen() {
             style={styles.welcomeImage}
           />
         </View>
-			<LoginCard />
+			<LoginCard
+        onUsernameChange={(text) => { username = text }}
+        onPasswordChange={(text) => { password = text }}
+        onFormSubmit={submitForm}
+      />
+      <Button
+        title="Press me!"
+        onPress={() => navigation.navigate('Home')}
+      />
       </ScrollView>
     </View>
   );
 }
- 
+
+function goHome() {
+
+}
+
+
 LoginScreen.navigationOptions = {
   header: null,
 };
 
+function submitForm() {
+  console.log("Submitting form...")
+  fetch("https://oakgrades.com/api/auth", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password
+    })
+  })
+  .then((res) => res.json())
+  .then((resJson) => {
+		console.log(resJson.message)
+    //console.log(resJson.user)
+    if (resJson.message == "Login successful") {
+      navigation.navigate("Home")
+    }
+	})
+	.catch((err) => {
+		console.log(err);
+		throw err;
+	})
+}
+
 function openOak() {
   WebBrowser.openBrowserAsync(
-    'https://oakgrades.com/'
+    'http://mike-desktop.local/'
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fffffa',
+    backgroundColor: 'beige',//'#fff',
   },
   developmentModeText: {
     marginBottom: 20,

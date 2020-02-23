@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 import { Card } from 'react-native-elements';
 
-import Fetch from 'react-native-fetch';
-
 export default function LoginCard(props) {
   return (
       <Card containerStyle={styles.card}>
@@ -16,7 +14,7 @@ export default function LoginCard(props) {
             style={[styles.textInput, {fontFamily: 'space-mono'}]}
             textContentType="username"
             onSubmitEditing={focusPasswordInput}
-            onChangeText={(text) => {username = text}}
+            onChangeText={props.onUsernameChange}
           />
           <TextInput
             placeholder="Password"
@@ -24,14 +22,14 @@ export default function LoginCard(props) {
             secureTextEntry={true}
             textContentType="password"
             ref={passwordInput}
-            onSubmitEditing={submitForm}
-            onChangeText={(text) => {password = text}}
+            onSubmitEditing={props.onFormSubmit}
+            onChangeText={props.onPasswordChange}
           />
           <View style={styles.loginButton}>
             <Button
               title="Go"
               color="white"
-              onPress={submitForm}
+              onPress={props.onFormSubmit}
             />
           </View>
         </View>
@@ -42,8 +40,7 @@ export default function LoginCard(props) {
 // password input ref
 const passwordInput = React.createRef();
 
-let username = "", password = "";
-
+/*
 function submitForm() {
   console.log("Submitting form...")
   fetch("https://oakgrades.com/api/auth", {
@@ -58,8 +55,15 @@ function submitForm() {
     })
   })
   .then((res) => res.json())
-  .then((resJson) => console.log(resJson))
+  .then((resJson) => {
+		console.log(resJson.message)
+	})
+	.catch((err) => {
+		console.log(err);
+		throw err;
+	})
 }
+*/
 
 function focusPasswordInput() {
   passwordInput.current.focus()

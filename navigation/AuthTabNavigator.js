@@ -15,19 +15,17 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator(
-  {
-    Login: LoginScreen,
-    Home: HomeScreen,
-  },
-  {
-    initialRouteName: 'Login',
-  },
-  config
+
+const LoginStack =
+createStackNavigator(
+	{
+		Login: LoginScreen,
+	},
+	config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+LoginStack.navigationOptions = {
+  tabBarLabel: 'Login',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -40,7 +38,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+LoginStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
@@ -75,7 +73,7 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+  LoginStack,
   LinksStack,
   SettingsStack,
 });

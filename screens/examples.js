@@ -78,3 +78,13 @@ function DevelopmentModeNotice() {
     );
   }
 }
+
+// header image
+<View style={styles.welcomeContainer}>
+  <Image
+    source={
+      require('../assets/images/icon.png')
+    }
+    style={styles.welcomeImage}
+  />
+</View>

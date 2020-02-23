@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
+  Button,
   Image,
   Platform,
   ScrollView,
@@ -13,25 +14,24 @@ import {
 import { MonoText } from '../components/StyledText';
 import ClassCard from '../components/ClassCard';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              require('../assets/images/icon.png')
-            }
-            style={styles.welcomeImage}
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Log Out"
+            onPress={() => navigation.navigate('Login')}
           />
         </View>
+        <View style={styles.welcomeContainer}></View>
+
         <ClassCard
           period="01"
           teacherLast="Santillan"
           average="100"
-          onPress={openOak}
         />
         <ClassCard
           period="02"
@@ -93,7 +93,7 @@ function openOak() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fffffa',
+    backgroundColor: '#BDCFBD',//'#fff',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -101,6 +101,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
+  },
+  buttonContainer: {
+    alignSelf: 'flex-start',
+    margin: 10,
   },
   contentContainer: {
     paddingTop: 30,
